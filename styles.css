@@ -1,0 +1,214 @@
+h1 {
+  font-family: "Exo 2",sans-serif;
+  text-align: center;
+}
+form input {
+  height:20px;
+  width: 220px;
+  padding: 5px 8px;
+}
+form button {
+  margin-left: 156px;
+}
+button.submit {
+    background-color: #68b12f;
+    background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
+    background: -webkit-linear-gradient(top, #68b12f, #50911e);
+    background: -moz-linear-gradient(top, #68b12f, #50911e);
+    background: -ms-linear-gradient(top, #68b12f, #50911e);
+    background: -o-linear-gradient(top, #68b12f, #50911e);
+    background: linear-gradient(top, #68b12f, #50911e);
+    border: 1px solid #509111;
+    border-bottom: 1px solid #5b992b;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 #9fd574;
+    -webkit-box-shadow: 0 1px 0 0 #9fd574 inset ;
+    -moz-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -ms-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -o-box-shadow: 0 1px 0 0 #9fd574 inset;
+    color: white;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-align: center;
+    text-shadow: 0 -1px 0 #396715;
+}
+button.submit:hover {
+    opacity:.85;
+    cursor: pointer;
+}
+button.submit:active {
+    border: 1px solid #20911e;
+    box-shadow: 0 0 10px 5px #356b0b inset;
+    -webkit-box-shadow:0 0 10px 5px #356b0b inset ;
+    -moz-box-shadow: 0 0 10px 5px #356b0b inset;
+    -ms-box-shadow: 0 0 10px 5px #356b0b inset;
+    -o-box-shadow: 0 0 10px 5px #356b0b inset;
+}
+fieldset {
+  border: 1px solid rgb(172, 173, 176);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+
+}
+
+legend {
+  font-family: "Exo 2", sans-serif;
+}
+label {
+  font-family: "Exo 2",sans-serif;
+  width:150px;
+  margin-top: 3px;
+  display: inline-block;
+  float: left;
+  padding: 3px;
+}
+em {
+  color: rgb(171, 18, 19);
+  font-weight: bold;
+  font-size: 25px;
+  font-family: serif;
+
+}
+*:focus {
+  outline: none;
+}
+form ul {
+  width:750px;
+  list-style-type: none;
+  list-style-position: outside;
+  margin: 0px;
+  padding: 0px;
+}
+form li {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+form input:focus {
+    padding-right:70px;
+}
+form input {
+    padding-right: 30px;
+    -moz-transition: padding .25s;
+    -webkit-transition: padding .25s;
+    -o-transition: padding .25s;
+    transition: padding .25s;
+}
+input:required {
+    background: #fff url(images/red_asterisk.png) no-repeat 98% center;
+    border: 1px solid #AAA;
+}
+form input:focus:invalid {
+    background: #fff url(images/invalid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #d45252;
+    border-color: #b03535
+}
+form input:required:valid {
+    background: #fff url(images/valid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: #28921f;
+}
+
+span {
+    background: #d45252;
+    border-radius: 3px 3px 3px 3px;
+    font-family: 'Exo 2';
+    color: white;
+    margin-left:8px;
+    padding: 1px 6px;
+    z-index: 999;
+    position: absolute;
+    display: none;
+}
+
+span::before {
+    content: "\25C0";
+    color:#d45252;
+    position: absolute;
+    top:1px;
+    left:-6px;
+}
+form input:focus + span {
+  display: inline;
+}
+form input:required:valid + span {
+  background: #28921f;
+}
+
+form input:required:valid + span::before {
+  color:#28921f;
+}
+
+.i2Style{
+  font:20px "Exo 2";
+  text-align: center;
+
+  font-style:normal;
+  color:#ffffff;
+  background:#e81010;
+  border-radius:10px;
+  border-width: 0px;
+  padding:20px 43px;
+  cursor:pointer;
+
+}
+.i2Style:active{
+  cursor:pointer;
+  position:relative;
+  top:2px;
+}
+body {margin:0}
+nav {
+  display: block;
+  margin: 20px 0;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+nav ul {
+  list-style: none;
+  margin: 0 auto;
+  width: 750px;
+  padding-left: 0;
+  text-align: center;
+  overflow: hidden;
+}
+nav ul li {
+  float: left;
+  width: 150px;
+  margin-right: 45px;
+}
+nav ul li:last-child {
+  margin-right: 0;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #4f4c45;
+  display: block;
+  font-family: 'Arimo', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 20px 0;
+  font-weight: bold;
+  transition: all 1s ease-in-out;
+}
+
+#one:hover, #two:hover, #three:hover, #four:hover {
+  background-position: 100px 0;
+  color: #95948F;
+}
+#one {
+  background: url(images/border-orange.png) repeat-x;
+}
+#two {
+  background: url(images/borger-grey.png) repeat-x;
+}
+#three {
+  background: url(images/border-sea.png) repeat-x;
+}
+#four {
+  background: url(images/border-blue.png) repeat-x;
+}

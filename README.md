@@ -4,7 +4,7 @@ Telegram bot for spring Gotocamp, written in Python and PHP
 
 ТРЕБОВАНИЯ: Windows 7 и новее
 
-* Скачайте [Python v3.4](https://www.python.org/downloads/release/python-346/) (это ОЧЕНЬ ВАЖНО, Python v3.5/3.6 не будет работать)
+* Скачайте [Python v3.4](https://www.python.org/downloads/release/python-344/) (это ОЧЕНЬ ВАЖНО, Python v3.5/3.6 не будет работать)
 * Скачайте и установите с [официального сайта MySQL](https://dev.mysql.com/downloads/connector/python/) mysql-connector-python-2.1.5-py3.4 для архитектуры вашего процесора (32 или 64)
 * Скачайте и установите [XAMPP 5.6](https://www.apachefriends.org/ru/index.html) в папку C:\\xampp (далее - ~)
 * В папку ~/mysql/data скопируйте папку проекта camp

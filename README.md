@@ -9,7 +9,7 @@ Telegram bot for spring Gotocamp, written in Python and PHP
 * Скачайте и установите [XAMPP 5.6](https://www.apachefriends.org/ru/index.html) в папку C:\\xampp (далее - ~)
 * скопируйте файл camp.sql в папку (далее - path)
 * В командной строке перейдите в папку ~/mysql/bin
-* наберите mysql
+* наберите mysql -u root
 * наберите source path/camp.sql
 * В любую удобную вам папку скопируйте папку CampBot
 * В папку ~/htdocs скопируйте все оставшиеся папки и файлы (папку images и файлы .htaccess, index.html, panel1.php, panel2.php, panel3.php, panel4.php, styles.css

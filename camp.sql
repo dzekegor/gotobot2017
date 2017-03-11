@@ -35,61 +35,18 @@ CREATE TABLE `achievements` (
 -- Dumping data for table `achievements`
 --
 
-LOCK TABLES `achievements` WRITE;
-/*!40000 ALTER TABLE `achievements` DISABLE KEYS */;
-INSERT INTO `achievements` VALUES (1,172388915,'Неспящий'),(2,172388915,'Создатель'),(3,335512109,'Самая лучшая мама'),(5,172388915,'УРАА!!!'),(6,335512109,'Мама молодец!'),(7,335512109,'Мама - самая лучшая!!!'),(8,172388915,'Молодец'),(9,335512109,'Красавица'),(11,172388915,'TEST');
-/*!40000 ALTER TABLE `achievements` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Table structure for table `admins`
 --
 
-DROP TABLE IF EXISTS `admins`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `admins` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(40) CHARACTER SET utf8 NOT NULL,
-  `home` varchar(40) CHARACTER SET utf8 NOT NULL,
-  `chatId` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `admins`
---
-
-LOCK TABLES `admins` WRITE;
-/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `emergency`
 --
 
-DROP TABLE IF EXISTS `emergency`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `emergency` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `text` varchar(50) CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`),
-  KEY `id_2` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `emergency`
---
-
-LOCK TABLES `emergency` WRITE;
-/*!40000 ALTER TABLE `emergency` DISABLE KEYS */;
-/*!40000 ALTER TABLE `emergency` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `gady`
@@ -136,11 +93,7 @@ CREATE TABLE `quest` (
 -- Dumping data for table `quest`
 --
 
-LOCK TABLES `quest` WRITE;
-/*!40000 ALTER TABLE `quest` DISABLE KEYS */;
-INSERT INTO `quest` VALUES (2,'Трижды три','9',2),(6,'8x8','64',2),(8,'16x3','48',2),(13,'В каком году отменили крепостное право?','1861',1);
-/*!40000 ALTER TABLE `quest` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Table structure for table `teams`
@@ -163,11 +116,7 @@ CREATE TABLE `teams` (
 -- Dumping data for table `teams`
 --
 
-LOCK TABLES `teams` WRITE;
-/*!40000 ALTER TABLE `teams` DISABLE KEYS */;
-INSERT INTO `teams` VALUES (1,'12345',172388915,'Первая команда'),(2,'qwerty',0,'Команда 2');
-/*!40000 ALTER TABLE `teams` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Table structure for table `timetable`
@@ -189,11 +138,7 @@ CREATE TABLE `timetable` (
 -- Dumping data for table `timetable`
 --
 
-LOCK TABLES `timetable` WRITE;
-/*!40000 ALTER TABLE `timetable` DISABLE KEYS */;
-INSERT INTO `timetable` VALUES (25,'9000','1'),(26,'09:00','2'),(27,'10:00','3'),(28,'22:05','УРА!!!');
-/*!40000 ALTER TABLE `timetable` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Table structure for table `users`
@@ -220,11 +165,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Егор Губанов','+79670341078','105',1,2,172388915,'Dz6503ek'),(3,'Ирина Соустова','89166802985','102',2,1,335512109,'lotos1'),(6,'Губанов Игорь Сергеевич','+8(499)263-14-07','354',2,1,0,'qwertyui');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

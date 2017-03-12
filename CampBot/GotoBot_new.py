@@ -241,6 +241,9 @@ def question(message):
             else:
                 
                 bot.send_message(message.chat.id,"Ура! Вы завершили квест!")
+                query = ("DELETE FROM quest WHERE id=%i" % t[0][0])
+                cursor.execute(query)
+                cnx.commit()
                 query = ("SELECT chatId FROM admins")
                 cursor.execute(query)
                 t = list(cursor)

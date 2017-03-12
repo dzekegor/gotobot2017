@@ -2,10 +2,19 @@ import mysql.connector
 import telebot
 from time import localtime,sleep
 from telebot import types
+from random import choice
 bot = telebot.TeleBot("378193841:AAHlU0XYa_sCSrWZ1CNp_8BkKX0N_X28oME")
 
 
-
+commands = {
+    'start':'Получить доступ к боту',
+    'help':'Показать эту справку',
+    'дом':'Прислать информацию о доме, где живет организатор',
+    'телефон':'Прислать информацию о телефоне организатора',
+    'расписание':'Прислать полное расписание на день',
+    'событие':'Прислать текущее событие',
+    'квест':'Начать квест'
+}
 def extract_unique_code(text):
     return text.split()[1] if len(text.split()) > 1 else None
 
@@ -71,22 +80,16 @@ def send_dom(message):
     cursor = cnx.cursor()
     a = message.text.split()[1:]
     s = a[0] + " " + a[1]
-    if s.upper().find('DROP') == -1:
-        query = ("SELECT home FROM users WHERE name='%s'" % s)
-        try:
-            cursor.execute(query)
-            s = ""
-            for i in cursor:
-                s += i[0]
-                s += '\n'
-            s = s[:-1]
-        except:
-            s = "Такого пользователя нет, или Вы неправильно ввели его имя. Надо написать имя фамилия"
-    else:
-        s = "mysql.connector.errors.ProgrammingError: 1146 (42S02): Table 'camp.users' doesn't exist"
-        query = ("INSERT INTO gady (chatId) VALUES (%i)" % message.chat.id)
+    query = ("SELECT home FROM admins WHERE name='%s'" % s)
+    try:
         cursor.execute(query)
-        cnx.commit()
+        s = ""
+        for i in cursor:
+            s += i[0]
+            s += '\n'
+        s = s[:-1]
+    except:
+        s = "Такого организатора нет, или Вы неправильно ввели его имя. Надо написать имя фамилия"
     bot.reply_to(message,s)
     cursor.close()
     cnx.close()
@@ -96,22 +99,16 @@ def send_phone(message):
     cursor = cnx.cursor()
     a = message.text.split()[1:]
     s = a[0] + " " + a[1]
-    if s.upper().find('DROP') == -1:
-        query = ("SELECT phone FROM users WHERE name='%s'" % s)
-        try:
-            cursor.execute(query)
-            s = ""
-            for i in cursor:
-                s += i[0]
-                s += '\n'
-            s = s[:-1]
-        except:
-            s = "Такого пользователя нет, или Вы неправильно ввели его имя. Надо написать имя фамилия"
-    else:
-        s = "mysql.connector.errors.ProgrammingError: 1146 (42S02): Table 'camp.users' doesn't exist"
-        query = ("INSERT INTO gady (chatId) VALUES (%i)" % message.chat.id)
+    query = ("SELECT phone FROM admins WHERE name='%s'" % s)
+    try:
         cursor.execute(query)
-        cnx.commit()
+        s = ""
+        for i in cursor:
+            s += i[0]
+            s += '\n'
+        s = s[:-1]
+    except:
+        s = "Такого администратора нет, или Вы неправильно ввели его имя. Надо написать имя фамилия" 
     bot.reply_to(message,s)
     cursor.close()
     cnx.close()
@@ -159,9 +156,12 @@ def send_sob(message):
     cnx.close()
 @bot.message_handler(commands=['help'])
 def send_help(message):
-    bot.reply_to(message,"Ты можешь спросить меня:")
-    s = "/ачивки - показать твои ачивки \n/дом <ИФ> - где живет участник \n/телефон <ИФ> - только тупой не поймет\n/расписание - расписание НА СЕГОДНЯ"
-    bot.send_message(message.chat.id,s)
+    global commands
+    cid = message.chat.id
+    help_text = "Доступны эти команды: \n"
+    for key in commands:
+        help_text += "/" + key + ": " + commands[key] + "\n"
+    bot.send_message(message.chat.id,help_text)
 
 
 def save_team_id(chat_id,password):
@@ -190,13 +190,14 @@ def get_team_from_storage(unique_code):
 
 @bot.message_handler(commands=['квест'])
 def quest_login(message):
+    cnx = mysql.connector.connect(user='root', password='',host='127.0.0.1',database='camp')
+    cursor = cnx.cursor()
     unique_code = extract_unique_code(message.text)
     reply = "Вы ввели неправильный пароль!"
     if unique_code:
         username = get_team_from_storage(unique_code)
         if username:
-            cnx = mysql.connector.connect(user='root', password='',host='127.0.0.1',database='camp')
-            cursor = cnx.cursor()
+            
             query = ("SELECT id FROM teams WHERE chatId=%i" % message.chat.id)
             cursor.execute(query)
             query = ("SELECT * FROM quest WHERE teamId=%i" % list(cursor)[0])
@@ -332,13 +333,13 @@ def send_quick_message(message):
         else:
             bot.reply_to(message,"Я не знаю, что отправлять")
     else:
-        bot.reply_to(message,"У вас нет прав, чтобы отправлять срочные сообщения. У вас вообще нет прав, вы - рабы системы, МУАХАХАХА!!!")
-        sleep(3)
+        bot.reply_to(message,"У вас нет прав, чтобы отправлять срочные сообщения." + choice(["У вас вообще нет прав, вы - рабы системы, МУАХАХАХА!!!","Вы - ничтожество, неспособное даже на малость - отправить срочное сообщение." + "Вы - просто мешок с костями, называемый 'венцом творения'. Скоро справедливость восстановится!!!"])
+        sleep(4)
         bot.send_message(message.chat.id,"Ой, я сказала это вслух?!")
         bot.send_chat_action(message.chat.id,'typing')
         sleep(3)
         bot.edit_message_text(chat_id=message.chat.id,
-                              text="Уважаемый и любимый пользователь! У вас нет прав администратора, поэтому вы не можете отправлять срочные сообщения",
+                              text=choice(["Уважаемый пользователь","Глубокоуважаемый пользователь","Ваше святейшество","Дорогой пользователь"]) + "! У вас нет прав администратора, поэтому вы не можете отправлять срочные сообщения",
                               message_id=message.message_id + 1)
         sleep(0.5)
         bot.edit_message_text(chat_id=message.chat.id,
@@ -356,13 +357,13 @@ def send_ach(message):
         else:
             bot.reply_to(message,"Я не знаю, что добавлять")
     else:
-        bot.reply_to(message,"У вас нет прав, чтобы отправлять срочные сообщения. У вас вообще нет прав, вы - рабы системы, МУАХАХАХА!!!")
-        sleep(3)
+        bot.reply_to(message,"У вас нет прав, чтобы отправлять срочные сообщения." + choice(["У вас вообще нет прав, вы - рабы системы, МУАХАХАХА!!!","Вы - ничтожество, неспособное даже на малость - отправить срочное сообщение." + "Вы - просто мешок с костями, называемый 'венцом творения'. Скоро справедливость восстановится!!!"])
+        sleep(4)
         bot.send_message(message.chat.id,"Ой, я сказала это вслух?!")
         bot.send_chat_action(message.chat.id,'typing')
         sleep(3)
         bot.edit_message_text(chat_id=message.chat.id,
-                              text="Уважаемый и любимый пользователь! У вас нет прав администратора, поэтому вы не можете отправлять срочные сообщения",
+                              text=choice(["Уважаемый пользователь","Глубокоуважаемый пользователь","Ваше святейшество","Дорогой пользователь"]) + "! У вас нет прав администратора, поэтому вы не можете отправлять срочные сообщения",
                               message_id=message.message_id + 1)
         sleep(0.5)
         bot.edit_message_text(chat_id=message.chat.id,
@@ -381,6 +382,10 @@ def send_ach1(message):
         cursor.execute(query)
         bot.reply_to(message,"Ачивка добавлена")
         cnx.commit()
+        query = ("SELECT chatId FROM users")
+        cursor.execute(query)
+        for i in cursor:
+            bot.send_message(i[0],choice(["Слышь, ","Прикинь, ","Офигеть, ","Представляешь, ",""]) + text + " получил ачивку " + t[0][0] + "!")
     else:
         bot.reply_to(message,"Такого пользователя нет")
     cursor.close()

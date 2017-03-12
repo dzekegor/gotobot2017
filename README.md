@@ -1,5 +1,5 @@
 # gotobot2017
-Telegram bot for spring Gotocamp, written in Python and PHP
+Телеграм бот для весенней школы Goto, написанный на Python и PHP
 ## Инструкция по установке
 
 ТРЕБОВАНИЯ: Windows 7 и новее

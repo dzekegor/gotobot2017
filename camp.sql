@@ -40,7 +40,27 @@ CREATE TABLE `achievements` (
 --
 -- Table structure for table `admins`
 --
+DROP TABLE IF EXISTS `admins`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `admins` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) CHARACTER SET utf8 NOT NULL,
+  `home` varchar(40) CHARACTER SET utf8 NOT NULL,
+  `chatId` int(11) NOT NULL,
+  `password` VARCHAR(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `admins`
+--
+
+LOCK TABLES `admins` WRITE;
+/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
+/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `emergency`

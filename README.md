@@ -12,7 +12,7 @@
 * наберите mysql -u root
 * наберите source path/camp.sql
 * В любую удобную вам папку скопируйте папку CampBot
-* В папку ~/htdocs/dashboard скопируйте файл 404.html (загляните туда хоть раз, я старался)
+* В папку ~/htdocs/dashboard скопируйте файл 404.html
 * В папку ~/htdocs скопируйте все оставшиеся папки и файлы (папку images и файлы .htaccess, index.html, panel1.php, panel2.php, panel3.php, panel4.php, styles.css, menu.css
 
 ## Запуск

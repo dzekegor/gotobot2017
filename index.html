@@ -3,9 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Панель управления GotoBotом</title>
-    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Comfortaa|Exo+2:300|Raleway:400" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="columns.css">
+    <link href="https://fonts.googleapis.com/css?family=Leckerli+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:700|Exo+2:300" rel="stylesheet">
+
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <style media="screen">
@@ -50,6 +53,7 @@
 	animation: rotate .5s linear infinite;
 	border-radius: 5px;
 }
+
 @keyframes rotate {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -86,13 +90,13 @@
       $("#addb").on('click',function () {
         var $number = $("#counter").text();
         var $number = $number -1 + 2;
-        $("<li><label for='sob[" + $number + "]'>Событие</label><input type='text' name='sob[" + $number + "]' placeholder='Событие " + $number + "'><span class='form_hint'>Событие</span></li><li><label for='time[" + $number + "]'>Время начала</label><input type='text' name='time[" + $number + "]' placeholder='Время начала'' required pattern='[0-9]{2}\:[0-9]{2}'>").insertBefore("#buttons");
+        $("<li><label for='sob[" + $number + "]'>Событие</label><input type='text' name='sob[" + $number + "]' placeholder='Событие " + $number + "'><span class='form_hint'>Событие</span></li><li><label for='time[" + $number + "]'>Время начала</label><input type='text' name='time[" + $number + "]' placeholder='Время начала'' required pattern='[0-9]{2}\:[0-9]{2}'>").appendTo("#f1");
         $("#counter").html($number);
       });
       $("#addb1").on('click',function () {
         var $number = $("#counter1").text();
         var $number = $number - 1 + 2;
-        $("<li><label for='question[" + $number + "]'>Вопрос</label><input type='text' name='question[" + $number + "]' placeholder='Вопрос " + $number + "' /><span class='form_hint'>Вопрос</span></li><li><label for='answer[" + $number + "]'>Правильный ответ</label><input type='text' name='answer[" + $number + "]' placeholder='Правильный ответ' required /><span class='form_hint'>Ответ</span></li><li><label for='team[" + $number + "]'>Команда</label><input type='text' name='team[" + $number + "]' placeholder='Для какой команды' required /><span class='form_hint'>Номер команды</span></li>").insertBefore("#buttons1");
+        $("<li><label for='question[" + $number + "]'>Вопрос</label><input type='text' name='question[" + $number + "]' placeholder='Вопрос " + $number + "' /><span class='form_hint'>Вопрос</span></li><li><label for='answer[" + $number + "]'>Правильный ответ</label><input type='text' name='answer[" + $number + "]' placeholder='Правильный ответ' required /><span class='form_hint'>Ответ</span></li><li><label for='team[" + $number + "]'>Команда</label><input type='text' name='team[" + $number + "]' placeholder='Для какой команды' required /><span class='form_hint'>Номер команды</span></li>").appendTo("#f2");
         $("#counter1").html($number);
       })
     });
@@ -104,21 +108,30 @@
 
       </div>
     </div>
-    <h1>Панель управления GotoBotом</h1>
+    <header>
+      <h1>Bot</h1>
 
-    <nav>
-      <ul class="menu" style="width: 1000px">
-        <li><a id="one" href="#timeless">Сообщение</a></li>
-        <li><a id="two" href="#add">Пользователь</a></li>
-        <li><a id="three" href="#ach">Ачивка</a></li>
-        <li><a id="four" href="#rasp">Расписание</a></li>
-        <li><a id="five" href="#quest">Квест</a></li>
-      </ul>
-    </nav>
-    <form class=""  id="timeless" action="panel3.php" method="post">
+      <nav>
+        <ul class="menu" style="width: 1200px">
+          <li><a id="one" href="#timeless">Сообщение</a></li>
+          <li><a id="two" href="#add">Пользователь</a></li>
+          <li><a id="admin" href="#addadmin">Админ</a></li>
+          <li><a id="three" href="#ach">Ачивка</a></li>
+          <li><a id="four" href="#rasp">Расписание</a></li>
+          <li><a id="five" href="#quest">Квест</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="container">
+
+
+    <section id="first">
+
+    <form  id="timeless" action="panel3.php" method="post">
       <fieldset>
         <legend>Срочное сообщение</legend>
-        <ul>
+        <ul class="sr">
           <li>
             <label for="quick">Сообщение</label>
             <input type="text" name="quick" placeholder="Введите сообщение" required>
@@ -130,76 +143,13 @@
         </ul>
       </fieldset>
     </form>
-    <form class="" id="add" action="panel1.php" method="post">
-      <fieldset>
-        <legend>Добавить ученика</legend>
-        <ul>
-        <li>
-          <label for="id">ID</label>
-          <input type="text" name="id" placeholder="ID">
-        </li>
-        <li>
-          <label for="name">Имя</label>
-          <input type="text" required name="name" placeholder="ФИО">
-          <span class="form_hint">ФИО</span>
-        </li>
-        <li>
-          <label for="subject">ID курса</label>
-          <input type="text" name="subject" placeholder="Предмет">
-        </li>
-        <li>
-          <label for="team">Номер отряда</label>
-          <input type="text" required name="team" placeholder="Отряд">
-          <span class="form_hint">ID отряда в базе данных</span>
-        </li>
-        <li>
-          <label for="phone">Номер телефона</label>
-          <input type="text" required name="phone" placeholder="Телефон" pattern="[0-9]{11}">
-          <span class="form_hint">Формат ***********</span>
-        </li>
-        <li>
-          <label for="password">Пароль</label>
-          <input type="text" required name="password" placeholder="Пароль" pattern="[a-z]{8}">
-          <span class="form_hint">8 символов от a до z</span>
-        </li>
-        <li>
-          <label for="home">Дом</label>
-          <input type="text" required name="home" placeholder="Дом">
-          <span class="form_hint">Номер дома</span>
-        </li>
-        <li>
-          <button type="submit" name="b2" class="i2Style">Добавить</button>
-        </li>
-      </ul>
-      </fieldset>
-    </form>
-
-
-    <form class="" id="ach" action="panel2.php" method="post">
-      <fieldset>
-        <legend>Добавить ачивку</legend>
-        <ul>
-          <li>
-            <label for="name">Имя</label>
-            <input type="text" required name="name" placeholder="Имя">
-            <span class="form_hint">Так, как в БД</span>
-          </li>
-          <li>
-            <label for="text">Текст</label>
-            <input type="text" required name="text" placeholder="Текст">
-            <span class="form_hint">Название ачивки</span>
-          </li>
-          <li>
-            <button type="submit" name="b2" class="i2Style">Добавить</button>
-          </li>
-        </ul>
-      </fieldset>
-    </form>
-
-    <form class="" id="rasp" action="panel4.php" method="post">
+    <form id="rasp" action="panel4.php" method="post">
       <fieldset>
         <legend>Изменить расписание</legend>
-        <ul id="raspis">
+        <ul id="raspis" class="sr">
+          <div id="f1">
+
+
           <li>
             <label for="sob[1]">Событие</label>
             <input type="text" name="sob[1]" placeholder="Событие 1">
@@ -210,44 +160,144 @@
             <input type="text" name="time[1]" placeholder="Время начала" required pattern="[0-9]{2}\:[0-9]{2}">
             <span class="form_hint">Формат HH:MM</span>
           </li>
-          <li class="reset" id="buttons">
-            <button type="button" class="i2Style" id="addb" name="addb">Добавить</button>
-          </li>
-          <li>
-            <button type="submit" class="i2Style" id="send" name="send">Отправить</button>
-          </li>
+          </div>
+          <div class="">
+            <li class="reset" id="buttons">
+              <button type="button" class="i2Style" id="addb" name="addb">Добавить</button>
+            </li>
+            <li>
+              <button type="submit" class="i2Style" id="send" name="send">Отправить</button>
+            </li>
+          </div>
+
         </ul>
       </fieldset>
       <span id="counter" style="display:none">1</span>
     </form>
-    <form class="" id="quest" action="panel5.php" method="post">
+
+    <form class="" id="addadmin" action="panel6.php" method="post">
+      <fieldset>
+        <legend>Добавить администратора</legend>
+        <ul class="sr">
+        <div>
+          <li>
+            <label for="name">Имя</label>
+            <input type="text" required name="name" placeholder="ФИ"  pattern="[А-Я]{1}[а-я]{1,} [А-Я]{1}[а-я]{1,}">
+            <span class="form_hint">ФИ</span>
+          </li>
+          <li>
+            <label for="phone">Номер телефона</label>
+            <input type="text" required name="phone" placeholder="Телефон" pattern="[0-9]{11}">
+            <span class="form_hint">Формат ***********</span>
+          </li>
+          <li>
+            <label for="home">Дом</label>
+            <input type="text" required name="home" placeholder="Дом">
+            <span class="form_hint">Номер дома</span>
+          </li>
+          <li>
+            <label for="password">Пароль</label>
+            <input type="text" required name="password" placeholder="Пароль" pattern="[a-z]{8}">
+            <span class="form_hint">8 символов от a до z</span>
+          </li>
+        </div>
+
+
+        <li>
+          <button type="submit" name="b2" class="i2Style">Добавить</button>
+        </li>
+      </ul>
+      </fieldset>
+    </form>
+
+    </section>
+    <section id="second">
+
+    <form id="ach" action="panel2.php" method="post">
+      <fieldset>
+        <legend>Добавить ачивку</legend>
+        <ul class="sr">
+          <div class="">
+
+          <li>
+            <label for="name">Имя</label>
+            <input type="text" required name="name" placeholder="Имя">
+            <span class="form_hint">Так, как в БД</span>
+          </li>
+          <li>
+            <label for="text">Текст</label>
+            <input type="text" required name="text" placeholder="Текст">
+            <span class="form_hint">Название ачивки</span>
+          </li>
+
+          </div>
+          <li>
+            <button type="submit" name="b2" class="i2Style">Добавить</button>
+          </li>
+        </ul>
+      </fieldset>
+    </form>
+    <form id="add" action="panel1.php" method="post">
+      <fieldset>
+        <legend>Добавить ученика</legend>
+        <ul class="sr">
+          <div class="">
+            <li>
+              <label for="name">Имя</label>
+              <input type="text" required name="name" placeholder="ФИ" pattern="[А-Я]{1}[а-я]{1,} [А-Я]{1}[а-я]{1,}">
+              <span class="form_hint">ФИ</span>
+            </li>
+            <li>
+              <label for="password">Пароль</label>
+              <input type="text" required name="password" placeholder="Пароль" pattern="[a-z]{8}">
+              <span class="form_hint">8 символов от a до z</span>
+            </li>
+
+          </div>
+          <li>
+            <button type="submit" name="b2" class="i2Style">Добавить</button>
+          </li>
+      </ul>
+      </fieldset>
+    </form>
+
+    <form id="quest" action="panel5.php" method="post">
+
       <fieldset>
         <legend>Добавить квест</legend>
-        <ul id="question">
-          <li>
-            <label for="question[1]">Вопрос</label>
-            <input type="text" name="question[1]" placeholder="Вопрос 1" />
-            <span class="form_hint">Вопрос</span>
-          </li>
-          <li>
-            <label for="answer[1]">Правильный ответ</label>
-            <input type="text" name="answer[1]" placeholder="Правильный ответ" required />
-            <span class="form_hint">Ответ</span>
-          </li>
-          <li>
-            <label for="team[1]">Команда</label>
-            <input type="text" name="team[1]" placeholder="Для какой команды" required />
-            <span class="form_hint">НОМЕР команды</span>
-          </li>
-          <li class="reset" id="buttons1">
-            <button type="button" class="i2Style" id="addb1" name="addb">Добавить</button>
-          </li>
-          <li>
-            <button type="submit" class="i2Style" id="send1" name="send">Отправить</button>
-          </li>
+        <ul id="question" class="sr">
+          <div id="f2">
+            <li>
+              <label for="question[1]">Вопрос</label>
+              <input type="text" name="question[1]" placeholder="Вопрос 1" />
+              <span class="form_hint">Вопрос</span>
+            </li>
+            <li>
+              <label for="answer[1]">Правильный ответ</label>
+              <input type="text" name="answer[1]" placeholder="Правильный ответ" required />
+              <span class="form_hint">Ответ</span>
+            </li>
+            <li>
+              <label for="team[1]">Команда</label>
+              <input type="text" name="team[1]" placeholder="Для какой команды" required />
+              <span class="form_hint">НОМЕР команды</span>
+            </li>
+          </div>
+          <div>
+            <li class="reset" id="buttons1">
+              <button type="button" class="i2Style" id="addb1" name="addb">Добавить</button>
+            </li>
+            <li>
+              <button type="submit" class="i2Style" id="send1" name="send">Отправить</button>
+            </li>
+          </div>
+
         </ul>
       </fieldset>
       <span id="counter1" style="display:none">1</span>
     </form>
+
+  </section>
+  </div>
   </body>
 </html>

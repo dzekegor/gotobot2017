@@ -1,7 +1,4 @@
-h1 {
-  font-family: "Exo 2",sans-serif;
-  text-align: center;
-}
+
 form input {
   height:20px;
   width: 220px;
@@ -12,8 +9,7 @@ form button {
 }
 
 fieldset {
-  border: 1px solid rgb(172, 173, 176);
-  border-radius: 10px;
+  border: none;
   margin: 10px;
   padding: 10px;
 
@@ -41,7 +37,7 @@ em {
   outline: none;
 }
 form ul {
-  width:750px;
+  /*width:750px;*/
   list-style-type: none;
   list-style-position: outside;
   margin: 0px;
@@ -50,13 +46,14 @@ form ul {
 form li {
   padding: 12px;
   border-bottom: 1px solid #eee;
-  position: relative;
+  /*position: relative;*/
 }
 form input:focus {
     padding-right:70px;
 }
 form input {
     padding-right: 30px;
+    display: inline-block;
     -moz-transition: padding .25s;
     -webkit-transition: padding .25s;
     -o-transition: padding .25s;
@@ -107,21 +104,23 @@ form input:required:valid + span::before {
   color:#28921f;
 }
 
-.i2Style{
-  font:20px "Exo 2";
-  text-align: center;
+.i2Style {
+  border-radius: 5px;
+  padding: 15px 35px;
+  font-size: 22px;
+  font-family: 'Exo 2';
+  width: 200px;
+  color: white;
+  background: #00B16A;
+  box-shadow: 0 5px 0 #1E824C;
+  /*background: #D64541;
+  box-shadow: 0 5px 0 #96281B;*/
+  cursor: pointer;
 
-  font-style:normal;
-  color:#ffffff;
-  background:#e81010;
-  border-radius:10px;
-  border-width: 0px;
-  padding:20px 43px;
-  cursor:pointer;
-
+  border: none;
+  transition: all 1s ease-in-out;
 }
-.i2Style:active{
-  cursor:pointer;
-  position:relative;
-  top:2px;
+.i2Style:hover {
+  background: #3FC380;
+  /*background: #EC644B;*/
 }

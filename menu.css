@@ -1,53 +1,64 @@
 body {margin:0}
 nav {
-  display: block;
-  margin: 20px 0;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  align-items: center;
+}
+header {
+  background: #fff;
+  margin-top: 0;
+  padding-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+  border-radius: 10px;
+}
+h1 {
+  font-family: 'Leckerli One';
+  display: inline-block;
+  color: rgb(80,98,115);
+  margin-left: 20px;
 }
 nav ul {
   list-style: none;
   margin: 0 auto;
-  width: 1000px;
+  width: 100%;
   padding-left: 0;
   text-align: center;
   overflow: hidden;
 }
 nav ul li {
   float: left;
-  width: 150px;
   margin-right: 45px;
 }
 nav ul li:last-child {
   margin-right: 0;
 }
+nav ul li:first-child {
+  margin-left: 45px;
+}
 nav ul li a {
   text-decoration: none;
-  color: #4f4c45;
+  color: rgb(92,107,121);
   display: block;
-  font-family: 'Arimo', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  padding: 20px 0;
-  font-weight: bold;
-  transition: all 1s ease-in-out;
+  font-family: 'Comfortaa', sans-serif;
+  margin: auto;
+  padding-bottom: 5px;
+  position: relative;
+  transition: all .3s ease-in-out;
 }
-
-#one:hover, #two:hover, #three:hover, #four:hover, #five:hover {
-  background-position: 100px 0;
-  color: #95948F;
+nav ul li a:hover {
+  color: rgb(41,187,156);
 }
-#five {
-  background: url(images/border-red.png) repeat-x;
+nav ul li a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom:0px;
+  background: rgb(41,187,156);
+  transition: width .5s linear;
 }
-#one {
-  background: url(images/border-orange.png) repeat-x;
-}
-#two {
-  background: url(images/border-grey.png) repeat-x;
-}
-#three {
-  background: url(images/border-sea.png) repeat-x;
-}
-#four {
-  background: url(images/border-blue.png) repeat-x;
+nav ul li a:hover::after {
+  width: 100%;
 }

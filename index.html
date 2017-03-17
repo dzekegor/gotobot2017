@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="columns.css">
     <link href="https://fonts.googleapis.com/css?family=Leckerli+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:700|Exo+2:300" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <style media="screen">
@@ -19,7 +19,7 @@
       top: 0;
       right: 0;
       bottom: 0;
-      background: #bbd149;
+      background:  #E91E63;
       z-index: 100500;
     }
 
@@ -113,14 +113,19 @@
 
       <nav>
         <ul class="menu" style="width: 1200px">
-          <li><a id="one" href="#timeless">Сообщение</a></li>
+          <li><a id="one" href="#">Сообщение</a></li>
           <li><a id="two" href="#add">Пользователь</a></li>
           <li><a id="admin" href="#addadmin">Админ</a></li>
-          <li><a id="three" href="#ach">Ачивка</a></li>
+          <li><a id="three" href="#">Ачивка</a></li>
           <li><a id="four" href="#rasp">Расписание</a></li>
           <li><a id="five" href="#quest">Квест</a></li>
         </ul>
       </nav>
+      <ul class="social">
+        <li id="facebook"></li>
+        <li id="vk"></li>
+        <li id="twitter"></li>
+      </ul>
     </header>
 
     <div id="container">
@@ -130,22 +135,33 @@
 
     <form  id="timeless" action="panel3.php" method="post">
       <fieldset>
-        <legend>Срочное сообщение</legend>
+        <div class="aheader">
+          <legend>Срочное сообщение</legend>
+        </div>
+
         <ul class="sr">
-          <li>
-            <label for="quick">Сообщение</label>
-            <input type="text" name="quick" placeholder="Введите сообщение" required>
-            <span class="form_hint">Ваше сообщение</span>
-          </li>
-          <li>
-            <button type="submit" name="b1" class="i2Style">Отправить</button>
-          </li>
+          <div class="f1">
+            <li>
+              <label for="quick">Сообщение</label>
+              <input type="text" name="quick" placeholder="Введите сообщение" required>
+              <span class="form_hint">Ваше сообщение</span>
+            </li>
+          </div>
+          <div class="">
+            <li>
+              <button type="submit" name="b1" class="i2Style">Отправить</button>
+            </li>
+          </div>
+
         </ul>
       </fieldset>
     </form>
     <form id="rasp" action="panel4.php" method="post">
       <fieldset>
-        <legend>Изменить расписание</legend>
+        <div class="aheader">
+          <legend>Изменить расписание</legend>
+        </div>
+
         <ul id="raspis" class="sr">
           <div id="f1">
 
@@ -177,7 +193,10 @@
 
     <form class="" id="addadmin" action="panel6.php" method="post">
       <fieldset>
-        <legend>Добавить администратора</legend>
+        <div class="aheader">
+          <legend>Добавить администратора</legend>
+        </div>
+
         <ul class="sr">
         <div>
           <li>
@@ -215,7 +234,10 @@
 
     <form id="ach" action="panel2.php" method="post">
       <fieldset>
-        <legend>Добавить ачивку</legend>
+        <div class="aheader">
+          <legend>Добавить ачивку</legend>
+        </div>
+
         <ul class="sr">
           <div class="">
 
@@ -239,7 +261,10 @@
     </form>
     <form id="add" action="panel1.php" method="post">
       <fieldset>
-        <legend>Добавить ученика</legend>
+        <div class="aheader">
+          <legend>Добавить ученика</legend>
+        </div>
+
         <ul class="sr">
           <div class="">
             <li>
@@ -264,7 +289,10 @@
     <form id="quest" action="panel5.php" method="post">
 
       <fieldset>
-        <legend>Добавить квест</legend>
+        <div class="aheader">
+          <legend>Добавить квест</legend>
+        </div>
+
         <ul id="question" class="sr">
           <div id="f2">
             <li>
@@ -298,6 +326,8 @@
     </form>
 
   </section>
+
   </div>
+  
   </body>
 </html>

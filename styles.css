@@ -10,13 +10,16 @@ form button {
 
 fieldset {
   border: none;
-  margin: 10px;
-  padding: 10px;
+  margin: 0 0 10px 0;
+  padding: 0 0 10px 0;
 
 }
 
 legend {
   font-family: "Exo 2", sans-serif;
+  font-size: 1.5em;
+  text-align: center;
+  color: rgb(53,52,52);
 }
 label {
   font-family: "Exo 2",sans-serif;
@@ -48,6 +51,9 @@ form li {
   border-bottom: 1px solid #eee;
   /*position: relative;*/
 }
+form li:last-child {
+  border-bottom: none;
+}
 form input:focus {
     padding-right:70px;
 }
@@ -70,8 +76,8 @@ form input:focus:invalid {
 }
 form input:required:valid {
     background: #fff url(images/valid.png) no-repeat 98% center;
-    box-shadow: 0 0 5px #5cd053;
-    border-color: #28921f;
+    box-shadow: 0 0 5px #00B16A;
+    border-color: #00B16A;
 }
 
 span {
@@ -97,11 +103,11 @@ form input:focus + span {
   display: inline;
 }
 form input:required:valid + span {
-  background: #28921f;
+  background: #00B16A;
 }
 
 form input:required:valid + span::before {
-  color:#28921f;
+  color: #00B16A;
 }
 
 .i2Style {
@@ -111,16 +117,15 @@ form input:required:valid + span::before {
   font-family: 'Exo 2';
   width: 200px;
   color: white;
-  background: #00B16A;
-  box-shadow: 0 5px 0 #1E824C;
-  /*background: #D64541;
-  box-shadow: 0 5px 0 #96281B;*/
+  background: #E91E63;
+  /*background: #00B16A;
+  box-shadow: 0 5px 0 #1E824C;*/
+  box-shadow: 0 5px 0 #880E4F;
   cursor: pointer;
 
   border: none;
   transition: all 1s ease-in-out;
 }
 .i2Style:hover {
-  background: #3FC380;
-  /*background: #EC644B;*/
+  background: #EC407A;
 }

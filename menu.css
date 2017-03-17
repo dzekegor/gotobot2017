@@ -2,21 +2,28 @@ body {margin:0}
 nav {
   display: inline-block;
   align-items: center;
+  width: 60%;
 }
 header {
-  background: #fff;
+  background: rgb(53,52,52);
   margin-top: 0;
   padding-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25);
-  border-radius: 10px;
+  position: fixed;
+  height: 12%;
+  top:0;
+  width: 100%;
+  left: 0;
+  z-index: 100500;
+
 }
-h1 {
+header h1 {
   font-family: 'Leckerli One';
   display: inline-block;
-  color: rgb(80,98,115);
-  margin-left: 20px;
+  /*color: rgb(80,98,115);*/
+  color: #fff;
+  margin-left: 15%;
+  padding-right: 30px;
+  border-right: 1px solid rgb(64,64,64);
 }
 nav ul {
   list-style: none;
@@ -28,7 +35,7 @@ nav ul {
 }
 nav ul li {
   float: left;
-  margin-right: 45px;
+  margin-right: 30px;
 }
 nav ul li:last-child {
   margin-right: 0;
@@ -38,7 +45,8 @@ nav ul li:first-child {
 }
 nav ul li a {
   text-decoration: none;
-  color: rgb(92,107,121);
+  /*color: rgb(92,107,121);*/
+  color: #fff;
   display: block;
   font-family: 'Comfortaa', sans-serif;
   margin: auto;
@@ -47,18 +55,43 @@ nav ul li a {
   transition: all .3s ease-in-out;
 }
 nav ul li a:hover {
-  color: rgb(41,187,156);
+  color:  #E91E63;
 }
-nav ul li a::after {
+.social {
+  display: inline-block;
+}
+.social li {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  border: 2px solid white;
+  position: relative;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+.social li:hover {
+  border: 2px solid  #E91E63;
+}
+.social li::before {
   content: "";
-  width: 0;
-  height: 2px;
+  font-family: FontAwesome;
+  color:#fff;
   position: absolute;
-  left: 0;
-  bottom:0px;
-  background: rgb(41,187,156);
-  transition: width .5s linear;
+  top: 10px;
+  left: 10px;
+  transition: all .3s ease-in-out;
 }
-nav ul li a:hover::after {
-  width: 100%;
+.social li:hover::before {
+  color:  #E91E63;
+}
+#facebook::before {
+  content: "\f09a";
+  left: 12px;
+}
+#vk::before {
+  content: "\f189";
+  left: 8px;
+}
+#twitter::before {
+  content: "\f099";
 }

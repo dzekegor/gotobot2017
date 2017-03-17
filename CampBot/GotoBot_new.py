@@ -13,7 +13,9 @@ commands = {
     'телефон':'Прислать информацию о телефоне организатора',
     'расписание':'Прислать полное расписание на день',
     'событие':'Прислать текущее событие',
-    'квест':'Начать квест'
+    'квест':'Начать квест',
+    'срочно':'Выслать срочное сообщение. (admin)',
+    'ачивка':'Добавить ачивку. (admin)'
 }
 def extract_unique_code(text):
     return text.split()[1] if len(text.split()) > 1 else None
@@ -88,9 +90,10 @@ def send_dom(message):
             s += i[0]
             s += '\n'
         s = s[:-1]
+        bot.reply_to(message,s)
     except:
         s = "Такого организатора нет, или Вы неправильно ввели его имя. Надо написать имя фамилия"
-    bot.reply_to(message,s)
+        bot.reply_to(message,s)
     cursor.close()
     cnx.close()
 @bot.message_handler(commands=['телефон'])
@@ -107,9 +110,10 @@ def send_phone(message):
             s += i[0]
             s += '\n'
         s = s[:-1]
+        bot.reply_to(message,s)
     except:
-        s = "Такого администратора нет, или Вы неправильно ввели его имя. Надо написать имя фамилия" 
-    bot.reply_to(message,s)
+        s = "Такого администратора нет, или Вы неправильно ввели его имя. Надо написать имя фамилия"
+        bot.reply_to(message,s)
     cursor.close()
     cnx.close()
 @bot.message_handler(commands=["расписание"])
@@ -178,6 +182,7 @@ def team_in_storage(unique_code):
     query = ("SELECT * FROM teams WHERE password='%s'" % unique_code)
     cursor.execute(query)
     if len(list(cursor)) > 0:
+        
         cursor.close()
         cnx.close()
         return True
@@ -197,7 +202,8 @@ def quest_login(message):
     if unique_code:
         username = get_team_from_storage(unique_code)
         if username:
-            
+            save_team_id(message.chat.id,unique_code)
+            cnx.commit()
             query = ("SELECT id FROM teams WHERE chatId=%i" % message.chat.id)
             cursor.execute(query)
             query = ("SELECT * FROM quest WHERE teamId=%i" % list(cursor)[0])
@@ -257,7 +263,7 @@ def question(message):
                 query = ("DELETE FROM quest WHERE id=%i" % t[0][0])
                 cursor.execute(query)
                 cnx.commit()
-                query = ("SELECT chatId FROM admins")
+                query = ("SELECT chatId FROM admins WHERE chatId!=0")
                 cursor.execute(query)
                 t = list(cursor)
                 query = ("SELECT name FROM teams WHERE chatId=%s" % message.chat.id)
@@ -333,13 +339,19 @@ def send_quick_message(message):
         else:
             bot.reply_to(message,"Я не знаю, что отправлять")
     else:
-        bot.reply_to(message,"У вас нет прав, чтобы отправлять срочные сообщения." + choice(["У вас вообще нет прав, вы - рабы системы, МУАХАХАХА!!!","Вы - ничтожество, неспособное даже на малость - отправить срочное сообщение." + "Вы - просто мешок с костями, называемый 'венцом творения'. Скоро справедливость восстановится!!!"])
+        s = "У вас нет прав, чтобы отправлять срочные сообщения."
+        s += choice(["У вас вообще нет прав, вы - рабы системы, МУАХАХАХА!!!",
+                                                                                             "Вы - ничтожество, неспособное даже на малость - отправить срочное сообщение.",
+                                                                                             "Вы - просто мешок с костями, называемый 'венцом творения'. Скоро справедливость восстановится!!!"
+                                                                                             ])
+        bot.reply_to(message,s)
         sleep(4)
         bot.send_message(message.chat.id,"Ой, я сказала это вслух?!")
         bot.send_chat_action(message.chat.id,'typing')
         sleep(3)
         bot.edit_message_text(chat_id=message.chat.id,
-                              text=choice(["Уважаемый пользователь","Глубокоуважаемый пользователь","Ваше святейшество","Дорогой пользователь"]) + "! У вас нет прав администратора, поэтому вы не можете отправлять срочные сообщения",
+                              text=choice(["Уважаемый пользователь","Глубокоуважаемый пользователь","Ваше святейшество","Дорогой пользователь"])
+                              + "! У вас нет прав администратора, поэтому вы не можете отправлять срочные сообщения",
                               message_id=message.message_id + 1)
         sleep(0.5)
         bot.edit_message_text(chat_id=message.chat.id,
@@ -357,16 +369,21 @@ def send_ach(message):
         else:
             bot.reply_to(message,"Я не знаю, что добавлять")
     else:
-        bot.reply_to(message,"У вас нет прав, чтобы отправлять срочные сообщения." + choice(["У вас вообще нет прав, вы - рабы системы, МУАХАХАХА!!!","Вы - ничтожество, неспособное даже на малость - отправить срочное сообщение." + "Вы - просто мешок с костями, называемый 'венцом творения'. Скоро справедливость восстановится!!!"])
-        sleep(4)
-        bot.send_message(message.chat.id,"Ой, я сказала это вслух?!")
-        bot.send_chat_action(message.chat.id,'typing')
-        sleep(3)
-        bot.edit_message_text(chat_id=message.chat.id,
+       s = "У вас нет прав, чтобы отправлять срочные сообщения."
+       s += choice(["У вас вообще нет прав, вы - рабы системы, МУАХАХАХА!!!",
+                                                                                             "Вы - ничтожество, неспособное даже на малость - отправить срочное сообщение.",
+                                                                                             "Вы - просто мешок с костями, называемый 'венцом творения'. Скоро справедливость восстановится!!!"
+                                                                                             ])
+       bot.reply_to(message,s)
+       sleep(4)
+       bot.send_message(message.chat.id,"Ой, я сказала это вслух?!")
+       bot.send_chat_action(message.chat.id,'typing')
+       sleep(3)
+       bot.edit_message_text(chat_id=message.chat.id,
                               text=choice(["Уважаемый пользователь","Глубокоуважаемый пользователь","Ваше святейшество","Дорогой пользователь"]) + "! У вас нет прав администратора, поэтому вы не можете отправлять срочные сообщения",
                               message_id=message.message_id + 1)
-        sleep(0.5)
-        bot.edit_message_text(chat_id=message.chat.id,
+       sleep(0.5)
+       bot.edit_message_text(chat_id=message.chat.id,
                               text="Надеюсь, вы не успели ничего прочитать :)",
                               message_id=message.message_id + 2)
 
@@ -382,14 +399,16 @@ def send_ach1(message):
         cursor.execute(query)
         bot.reply_to(message,"Ачивка добавлена")
         cnx.commit()
-        query = ("SELECT chatId FROM users")
+        query = ("SELECT chatId FROM users WHERE chatId!=0")
         cursor.execute(query)
-        for i in cursor:
-            bot.send_message(i[0],choice(["Слышь, ","Прикинь, ","Офигеть, ","Представляешь, ",""]) + text + " получил ачивку " + t[0][0] + "!")
+        i = list(cursor)
+        for k in i:
+            bot.send_message(chat_id=k[0],text=choice(["Слышь, ","Прикинь, ","Офигеть, ","Представляешь, ",""]) + message.text + " получил ачивку " + text + "!")
     else:
         bot.reply_to(message,"Такого пользователя нет")
     cursor.close()
     cnx.close()
+
 bot.polling()
 
 

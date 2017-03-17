@@ -18,10 +18,28 @@ def check(t):
     if i == 1:
         query = ("SELECT chatId FROM users WHERE chatId > 0")
         cursor.execute(query)
-        for i in cursor:
-            bot.send_message(i[0], "Началось событие " + event1)
+        for n in cursor:
+            bot.send_message(n[0], "Началось событие " + event1)
+    users = []
+    query = ("SELECT chatId,name FROM users WHERE chatId > 0")
+    cursor.execute(query)
+    for k in cursor:
+        users.append(k)
+    query = ("SELECT chatId,text FROM new_achievements")
+    cursor.execute(query)
+    t = cursor
+    
+    for (chatId,text) in t:
+        query = ("SELECT name FROM users WHERE chatId='%s'" % chatId)
+        cursor.execute(query)
+        name = list(cursor)[0][0]
+        for u in users:
+            bot.send_message(u[0],name+" получил(а) ачивку " + text)
+    query = ("DELETE FROM new_achievements WHERE 1")
+    cursor.execute(query)
+    cnx.commit()
     cursor.close()
     cnx.close()
-    sleep(60)
+    sleep(30)
 while 1:
     check(localtime())

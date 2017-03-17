@@ -28,7 +28,7 @@ CREATE TABLE `achievements` (
   `text` varchar(40) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `achievements` (
 
 LOCK TABLES `achievements` WRITE;
 /*!40000 ALTER TABLE `achievements` DISABLE KEYS */;
-INSERT INTO `achievements` VALUES (1,172388915,'Неспящий'),(2,172388915,'Создатель'),(3,335512109,'Самая лучшая мама'),(5,172388915,'УРАА!!!'),(6,335512109,'Мама молодец!'),(7,335512109,'Мама - самая лучшая!!!'),(8,172388915,'Молодец'),(9,335512109,'Красавица'),(11,172388915,'TEST'),(12,172388915,'Умница'),(13,335512109,'Красавица'),(14,335512109,'Зайка');
+INSERT INTO `achievements` VALUES (1,172388915,'Неспящий'),(2,172388915,'Создатель'),(3,335512109,'Самая лучшая мама'),(5,172388915,'УРАА!!!'),(6,335512109,'Мама молодец!'),(7,335512109,'Мама - самая лучшая!!!'),(8,172388915,'Молодец'),(9,335512109,'Красавица'),(11,172388915,'TEST'),(12,172388915,'Умница'),(13,335512109,'Красавица'),(14,335512109,'Зайка'),(18,335512109,'Ирина Соустова'),(19,335512109,'Самая лучшая мама'),(20,172388915,'заработало!'),(21,335512109,'Красавица'),(22,172388915,'Ну же!'),(32,335512109,'ну пж'),(33,335512109,'ну пж'),(34,335512109,'ну пж'),(35,335512109,'пж'),(36,335512109,'пж'),(37,335512109,'пж'),(38,335512109,'пж'),(39,335512109,'Молодец'),(40,335512109,'УРААА!!'),(41,335512109,'Пожалуйста!!'),(42,335512109,'Умница'),(43,335512109,'Умница'),(44,335512109,'Умница'),(45,335512109,'Молодец'),(46,335512109,'Молодец'),(47,335512109,'Умница');
 /*!40000 ALTER TABLE `achievements` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,10 +52,11 @@ CREATE TABLE `admins` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(40) CHARACTER SET utf8 NOT NULL,
   `home` varchar(40) CHARACTER SET utf8 NOT NULL,
+  `phone` varchar(11) NOT NULL,
   `chatId` int(11) NOT NULL,
   `password` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +65,7 @@ CREATE TABLE `admins` (
 
 LOCK TABLES `admins` WRITE;
 /*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-INSERT INTO `admins` VALUES (2,'Алена Ильина','100',0,'asdfg');
+INSERT INTO `admins` VALUES (2,'Алена Ильина','100','4531134656',0,'asdfg'),(3,'Бибилов Иван','203','12345678901',0,'bibilovi'),(4,'Татьяна Соустова','8','84953600762',0,'tatianas');
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,6 +119,30 @@ LOCK TABLES `gady` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `new_achievements`
+--
+
+DROP TABLE IF EXISTS `new_achievements`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `new_achievements` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `chatId` int(20) NOT NULL,
+  `text` varchar(40) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `new_achievements`
+--
+
+LOCK TABLES `new_achievements` WRITE;
+/*!40000 ALTER TABLE `new_achievements` DISABLE KEYS */;
+/*!40000 ALTER TABLE `new_achievements` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `quest`
 --
 
@@ -131,7 +156,7 @@ CREATE TABLE `quest` (
   `teamId` int(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -167,7 +192,7 @@ CREATE TABLE `teams` (
 
 LOCK TABLES `teams` WRITE;
 /*!40000 ALTER TABLE `teams` DISABLE KEYS */;
-INSERT INTO `teams` VALUES (1,'12345',0,'Первая команда'),(2,'qwerty',0,'Команда 2');
+INSERT INTO `teams` VALUES (1,'12345',172388915,'Первая команда'),(2,'qwerty',0,'Команда 2');
 /*!40000 ALTER TABLE `teams` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,7 +209,7 @@ CREATE TABLE `timetable` (
   `event` varchar(40) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,7 +218,7 @@ CREATE TABLE `timetable` (
 
 LOCK TABLES `timetable` WRITE;
 /*!40000 ALTER TABLE `timetable` DISABLE KEYS */;
-INSERT INTO `timetable` VALUES (25,'9000','1'),(26,'09:00','2'),(27,'10:00','3'),(28,'22:05','УРА!!!');
+INSERT INTO `timetable` VALUES (29,'08:00','Подьем'),(30,'08:30','Зарядка'),(31,'09:00','Завтрак'),(32,'10:00','Пара 1'),(33,'20:17','УРААА');
 /*!40000 ALTER TABLE `timetable` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,7 +236,7 @@ CREATE TABLE `users` (
   `password` varchar(8) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,7 +245,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Егор Губанов',172388915,'Dz6503ek'),(3,'Ирина Соустова',335512109,'lotos1'),(6,'Губанов Игорь Сергеевич',0,'qwertyui');
+INSERT INTO `users` VALUES (1,'Егор Губанов',172388915,'Dz6503ek'),(3,'Ирина Соустова',335512109,'lotos1'),(6,'Губанов Игорь Сергеевич',0,'qwertyui'),(7,'Мамочка Любимая',0,'asdfghjk'),(8,'Евгений Процун',0,'evgenijp');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -233,4 +258,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-13 19:57:58
+-- Dump completed on 2017-03-17 22:01:50

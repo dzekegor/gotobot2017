@@ -81,9 +81,10 @@ def send_dom(message):
     cnx = mysql.connector.connect(user='root', password='',host='127.0.0.1',database='camp')
     cursor = cnx.cursor()
     a = message.text.split()[1:]
-    s = a[0] + " " + a[1]
-    query = ("SELECT home FROM admins WHERE name='%s'" % s)
+    
     try:
+        s = a[0] + " " + a[1]
+        query = ("SELECT home FROM admins WHERE name='%s'" % s)
         cursor.execute(query)
         s = ""
         for i in cursor:
@@ -101,9 +102,10 @@ def send_phone(message):
     cnx = mysql.connector.connect(user='root', password='',host='127.0.0.1',database='camp')
     cursor = cnx.cursor()
     a = message.text.split()[1:]
-    s = a[0] + " " + a[1]
-    query = ("SELECT phone FROM admins WHERE name='%s'" % s)
+    
     try:
+        s = a[0] + " " + a[1]
+        query = ("SELECT phone FROM admins WHERE name='%s'" % s)
         cursor.execute(query)
         s = ""
         for i in cursor:
